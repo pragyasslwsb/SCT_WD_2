@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#101a2b">
+	<title>Tempo Stopwatch</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<main class="app-shell">
+		<!-- Main stopwatch card containing the timer, controls, and lap history. -->
+		<section class="stopwatch-card" aria-labelledby="page-title">
+			<!-- Branding and current stopwatch state. -->
+			<header class="topbar">
+				<div class="brand-lockup"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><div><p class="eyebrow">Precision timer</p><h1 id="page-title">Tempo</h1></div></div>
+				<div class="status-pill" id="statusPill"><span class="status-dot"></span><span id="statusText">Ready</span></div>
+			</header>
+			<!-- Large elapsed-time readout. -->
+			<div class="timer-panel">
+				<p class="timer-label">Elapsed time</p>
+				<div class="time-display" id="timeDisplay" aria-live="polite" aria-atomic="true">00:00<span class="milliseconds">.00</span></div>
+				<p class="hint" id="hintText">Start the timer when you are ready.</p>
+			</div>
+			<!-- Primary actions for starting, pausing, recording laps, and resetting. -->
+			<div class="controls" aria-label="Stopwatch controls">
+				<button class="button button-primary" id="startPauseButton" type="button"><span class="button-icon" id="startPauseIcon" aria-hidden="true">▶</span><span id="startPauseText">Start</span></button>
+				<button class="button button-secondary" id="lapButton" type="button" disabled><span class="button-icon" aria-hidden="true">＋</span><span>Lap</span></button>
+				<button class="button button-ghost" id="resetButton" type="button" disabled>Reset</button>
+			</div>
+			<!-- Lap history is populated dynamically by script.js. -->
+			<section class="laps-section" aria-labelledby="laps-title">
+				<div class="section-heading"><div><h2 id="laps-title">Lap times</h2><p id="lapSummary">Your recorded intervals will appear here.</p></div><span class="lap-count" id="lapCount">0 laps</span></div>
+				<div class="laps-table-wrap"><table class="laps-table"><thead><tr><th scope="col">Lap</th><th scope="col">Split</th><th scope="col">Total</th></tr></thead><tbody id="lapsList"><tr class="empty-state" id="emptyState"><td colspan="3"><span class="empty-icon">＋</span><span>No laps recorded yet</span></td></tr></tbody></table></div>
+			</section>
+		</section>
+		<!-- Keyboard shortcuts provide quick access to the main actions. -->
+		<footer class="page-footer"><span class="keyboard-key">Space</span> start / pause <span class="footer-separator">·</span> <span class="keyboard-key">L</span> record lap <span class="footer-separator">·</span> <span class="keyboard-key">R</span> reset</footer>
+	</main>
+	<script src="script.js"></script>
+</body>
+</html>
